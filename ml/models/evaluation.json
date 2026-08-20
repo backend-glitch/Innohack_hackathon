@@ -1,0 +1,72 @@
+{
+  "dataset": "C:/Users/abhay/Desktop/floodguard-ai/ml/data/processed/flood_severity_dataset.csv",
+  "target": {
+    "name": "Flood Severity",
+    "mapping": {
+      "Flood": 0,
+      "Severe Flood": 1
+    }
+  },
+  "feature_count": 92,
+  "primary_group_disjoint_evaluation": {
+    "accuracy": 0.710989,
+    "precision_severe_flood": 0.634783,
+    "recall_severe_flood": 0.449231,
+    "f1_severe_flood": 0.526126,
+    "roc_auc": 0.713346,
+    "confusion_matrix": [
+      [
+        501,
+        84
+      ],
+      [
+        179,
+        146
+      ]
+    ],
+    "training_samples": 3638,
+    "validation_samples": 910,
+    "training_gauges": 124,
+    "validation_gauges": 31,
+    "training_target_distribution": {
+      "0": 2334,
+      "1": 1304
+    },
+    "validation_target_distribution": {
+      "0": 585,
+      "1": 325
+    },
+    "validation_method": "Deterministic GroupShuffleSplit-style 80/20 gauge-disjoint holdout (5000 seeded candidates; selected for size and target-prevalence balance)."
+  },
+  "secondary_time_aware_evaluation": {
+    "accuracy": 0.605495,
+    "precision_severe_flood": 0.553846,
+    "recall_severe_flood": 0.372093,
+    "f1_severe_flood": 0.445131,
+    "roc_auc": 0.664107,
+    "confusion_matrix": [
+      [
+        407,
+        116
+      ],
+      [
+        243,
+        144
+      ]
+    ],
+    "training_samples": 3638,
+    "validation_samples": 910,
+    "training_gauges": 103,
+    "validation_gauges": 138,
+    "training_target_distribution": {
+      "0": 2396,
+      "1": 1242
+    },
+    "validation_target_distribution": {
+      "0": 523,
+      "1": 387
+    },
+    "validation_method": "Chronological holdout: train before 2013-07-04, validate on and after 2013-07-04.",
+    "overlapping_gauges": 86
+  }
+}

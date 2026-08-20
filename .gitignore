@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local ML/API runtimes
+.api_runtime/
+.api_runtime_clean/
+.training_runtime/
+
+# Environment/secrets
+.env
+.env.*
+!.env.example
+
+# Raw and processed datasets
+ml/data/raw/
+ml/data/processed/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
