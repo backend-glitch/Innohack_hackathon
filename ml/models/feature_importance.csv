@@ -1,0 +1,93 @@
+rank,feature name,importance_gain
+1,Soil type__Luvisols,59.697994232177734
+2,Precipitation of Coldest Quarter,55.653778076171875
+3,Population Count,26.29616928100586
+4,Precipitation of Driest Quarter,20.896141052246094
+5,Danger Level,19.691753387451172
+6,Temperature Annual Range,16.639938354492188
+7,Mean Diurnal Range,15.620687484741211
+8,Land cover__No dominant class,14.899324417114258
+9,Precipitation of Wettest Month,14.73431396484375
+10,2015_GDP_PC_PPP,14.317543029785156
+11,2010_GDP_PC_PPP,14.01546573638916
+12,Mean Temperature of Driest Quarter,13.428199768066406
+13,Precipitation of Driest Month,11.743367195129395
+14,Drainage Texture,10.485698699951172
+15,Temperature Seasonality,10.010154724121094
+16,Mean Temperature of Warmest Quarter,9.964338302612305
+17,Precipitation of Warmest Quarter,9.60399055480957
+18,2010_HDI,8.981005668640137
+19,1990_GDP_PC_PPP,8.795015335083008
+20,Relief Ratio,7.785848140716553
+21,Form Factor,7.728771686553955
+22,Annual Mean Temperature,7.69968318939209
+23,Drainage Area,7.479222297668457
+24,Min Temperature of Coldest Month,7.283491611480713
+25,2000_HDI,7.13625431060791
+26,Mean Temperature of Coldest Quarter,7.0665717124938965
+27,Max Temperature of Warmest Month,7.0115461349487305
+28,2000_GDP_PPP,6.684478759765625
+29,Compactness Coefficient,6.661229610443115
+30,KoppenGeiger Climate Type__Tropical,6.622286319732666
+31,Catchment Perimeter,6.5918097496032715
+32,Catchment Length,6.510391712188721
+33,T1d,6.399930477142334
+34,Ruggedness Number,6.391330242156982
+35,2005_GDP_PPP,6.2127685546875
+36,Catchment Area,5.926700592041016
+37,Longitude,5.8921661376953125
+38,Precipitation Seasonality,5.807164192199707
+39,Mean Temperature of Wettest Quarter,5.79686164855957
+40,lithology type__No dominant class,5.724891662597656
+41,2005_GDP_PC_PPP,5.659142017364502
+42,2015_GDP_PPP,5.638763427734375
+43,Catchment Relief,5.582362651824951
+44,Population Density,5.436349868774414
+45,1990_GDP_PPP,5.255082607269287
+46,Circularity Ratio,5.2123799324035645
+47,Precipitation of Wettest Quarter,5.176352024078369
+48,Warning Level,5.085463523864746
+49,lithology type__Unconsolidated sediments,4.996532440185547
+50,Annual Precipitation,4.917269706726074
+51,Drainage Density,4.914793014526367
+52,T9d,4.820974826812744
+53,Stream Order,4.670702934265137
+54,T8d,4.648597717285156
+55,Sinuosity Index,4.645843505859375
+56,1995_GDP_PPP,4.596740245819092
+57,Elongation Ratio,4.50773286819458
+58,T7d,4.257175922393799
+59,Isothermality,4.163256645202637
+60,2010_GDP_PPP,4.1584978103637695
+61,T5d,4.127609729766846
+62,Infiltration Number,4.1061015129089355
+63,1995_GDP_PC_PPP,4.096632957458496
+64,T10d,4.070314884185791
+65,T2d,4.054833889007568
+66,T4d,4.041264057159424
+67,lithology type__Basic volcanic rocks,3.9877288341522217
+68,lithology type__Metamorphics,3.964395046234131
+69,2015_HDI,3.9371275901794434
+70,T3d,3.9056556224823
+71,Soil type__No dominant class,3.8886964321136475
+72,Latitude,3.6018154621124268
+73,T6d,3.597803831100464
+74,Drainage Intensity,3.3958191871643066
+75,2000_GDP_PC_PPP,3.150080442428589
+76,2005_HDI,2.835012197494507
+77,lithology type__Acid plutonic rocks,2.4053807258605957
+78,Soil type__Vertisols,2.2047371864318848
+79,Soil type__Acrisols,2.1828246116638184
+80,Soil type__Cambisols,1.1268887519836426
+81,KoppenGeiger Climate Type__Arid,0.0
+82,1995_HDI,0.0
+83,1990_HDI,0.0
+84,KoppenGeiger Climate Type__No dominant class,0.0
+85,Land cover__Forest,0.0
+86,Land cover__Cropland,0.0
+87,KoppenGeiger Climate Type__Temperate,0.0
+88,Land cover__Mosaic vegetation,0.0
+89,Soil type__Lixisols,0.0
+90,Soil type__Leptosols,0.0
+91,Soil type__Fluvisols,0.0
+92,lithology type__Siliciclastic sedimentary rocks,0.0
