@@ -13,18 +13,52 @@ export function demoWeather(lat, lng) {
 }
 
 export function demoRisk(lat, lng) {
+  const riskScore = 92;
+  const riskLevel = "CRITICAL";
   return {
     ...baseLocation(lat, lng),
-    probability: 0.82,
-    risk: "CRITICAL",
+    risk_score: riskScore,
+    risk_level: riskLevel,
     confidence: 0.91,
-    predictionWindow: "72 hours",
+    prediction_window_hours: 72,
     factors: [
       { name: "Heavy Rainfall", impact: 0.35 },
       { name: "High River Level", impact: 0.28 },
       { name: "High Soil Moisture", impact: 0.17 }
     ],
+    probability: riskScore / 100,
+    risk: riskLevel,
+    predictionWindow: "72 hours",
     recommendation: "Avoid low-lying areas and move toward a safe shelter."
+  };
+}
+
+export function demoZones(lat = 12.97, lng = 79.15) {
+  return {
+    zones: [
+      {
+        id: "zone-001",
+        risk_score: 92,
+        risk_level: "CRITICAL",
+        polygon: [
+          [lng - 0.01, lat - 0.01],
+          [lng + 0.01, lat - 0.01],
+          [lng + 0.01, lat + 0.01],
+          [lng - 0.01, lat + 0.01]
+        ]
+      },
+      {
+        id: "zone-002",
+        risk_score: 70,
+        risk_level: "HIGH",
+        polygon: [
+          [lng - 0.02, lat - 0.02],
+          [lng + 0.02, lat - 0.02],
+          [lng + 0.02, lat + 0.02],
+          [lng - 0.02, lat + 0.02]
+        ]
+      }
+    ]
   };
 }
 
@@ -47,8 +81,32 @@ export function demoRoute(from, to) {
 
 export function demoShelters(lat = 12.97, lng = 79.15) {
   return [
-    { id: "S001", name: "Emergency Relief Center", lat: lat + 0.001, lng: lng - 0.01, distance: 1.2, capacity: 500, available: 320, status: "OPEN" },
-    { id: "S002", name: "Community Relief Center", lat: lat - 0.009, lng: lng - 0.006, distance: 2.4, capacity: 300, available: 180, status: "OPEN" }
+    {
+      id: "S001",
+      name: "Emergency Relief Center",
+      lat: lat + 0.001,
+      lng: lng - 0.01,
+      distance: 1.2,
+      capacity: 500,
+      available: 320,
+      available_capacity: 320,
+      latitude: lat + 0.001,
+      longitude: lng - 0.01,
+      status: "OPEN"
+    },
+    {
+      id: "S002",
+      name: "Community Relief Center",
+      lat: lat - 0.009,
+      lng: lng - 0.006,
+      distance: 2.4,
+      capacity: 300,
+      available: 180,
+      available_capacity: 180,
+      latitude: lat - 0.009,
+      longitude: lng - 0.006,
+      status: "OPEN"
+    }
   ];
 }
 

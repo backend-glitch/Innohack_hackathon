@@ -140,12 +140,12 @@ Example:
 
 FLOOD RISK
 
-82%
+92
 
 CRITICAL
 
 Expected within:
-12 hours
+72 hours
 
 Why?
 
@@ -163,8 +163,6 @@ Shelter name
 Distance
 Capacity
 Available capacity
-Medical support
-Water
 Status
 
 Example:
@@ -174,9 +172,6 @@ Emergency Shelter A
 1.8 km away
 
 288 spaces available
-
-Medical ✓
-Water ✓
 
 OPEN
 
@@ -190,12 +185,10 @@ FIND SAFE ROUTE
 
 Call:
 
-POST /api/routes/safe
+GET /api/route
 
 Display:
 
-Origin
-Destination
 Distance
 ETA
 Risk level
@@ -219,7 +212,7 @@ getRisk()
 getWeather()
 getZones()
 getShelters()
-getSafeRoute()
+getRoute()
 getAlerts()
 
 Do NOT scatter axios calls throughout components.
@@ -316,3 +309,13 @@ npm run dev
 [ ] Responsive design
 [ ] Demo mode
 [ ] API integration
+
+---
+
+# 🔌 Current Backend Contract
+
+- Use `risk_score`, `risk_level`, `confidence`, `prediction_window_hours`, and `factors` for risk data.
+- Keep using `GET /api/route` for now.
+- Use `lat` / `lng` in backend-facing JSON.
+- Treat `available_capacity` as supported for shelters during integration.
+- If Leaflet needs `[lat, lng]`, convert locally in the frontend.

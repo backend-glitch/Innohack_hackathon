@@ -1,0 +1,114 @@
+{
+  "description": "Demo payloads for Member 1 ML /predict integration. Use these to verify LOW, MODERATE, HIGH, and CRITICAL cases.",
+  "request_shape": {
+    "latitude": 26.14,
+    "longitude": 91.74,
+    "rainfall_1h": 35,
+    "rainfall_6h": 95,
+    "rainfall_24h": 180,
+    "rainfall_72h": 320,
+    "river_level": 6.8,
+    "river_level_change": 0.75,
+    "temperature": 27,
+    "humidity": 91,
+    "soil_moisture": 88,
+    "elevation": 25,
+    "distance_from_river": 0.8,
+    "forecast_rainfall_24h": 210,
+    "forecast_rainfall_72h": 380,
+    "historical_flood_frequency": 0.78
+  },
+  "cases": [
+    {
+      "case": "LOW",
+      "payload": {
+        "latitude": 26.14,
+        "longitude": 91.74,
+        "rainfall_1h": 2,
+        "rainfall_6h": 8,
+        "rainfall_24h": 20,
+        "rainfall_72h": 35,
+        "river_level": 1.2,
+        "river_level_change": 0.05,
+        "temperature": 31,
+        "humidity": 52,
+        "soil_moisture": 22,
+        "elevation": 45,
+        "distance_from_river": 6.5,
+        "forecast_rainfall_24h": 12,
+        "forecast_rainfall_72h": 25,
+        "historical_flood_frequency": 0.08
+      }
+    },
+    {
+      "case": "MODERATE",
+      "payload": {
+        "latitude": 26.14,
+        "longitude": 91.74,
+        "rainfall_1h": 12,
+        "rainfall_6h": 35,
+        "rainfall_24h": 70,
+        "rainfall_72h": 110,
+        "river_level": 3.4,
+        "river_level_change": 0.22,
+        "temperature": 29,
+        "humidity": 68,
+        "soil_moisture": 48,
+        "elevation": 28,
+        "distance_from_river": 3.1,
+        "forecast_rainfall_24h": 55,
+        "forecast_rainfall_72h": 90,
+        "historical_flood_frequency": 0.24
+      }
+    },
+    {
+      "case": "HIGH",
+      "payload": {
+        "latitude": 26.14,
+        "longitude": 91.74,
+        "rainfall_1h": 28,
+        "rainfall_6h": 75,
+        "rainfall_24h": 150,
+        "rainfall_72h": 250,
+        "river_level": 5.8,
+        "river_level_change": 0.58,
+        "temperature": 27,
+        "humidity": 82,
+        "soil_moisture": 72,
+        "elevation": 18,
+        "distance_from_river": 1.6,
+        "forecast_rainfall_24h": 130,
+        "forecast_rainfall_72h": 210,
+        "historical_flood_frequency": 0.53
+      }
+    },
+    {
+      "case": "CRITICAL",
+      "payload": {
+        "latitude": 26.14,
+        "longitude": 91.74,
+        "rainfall_1h": 35,
+        "rainfall_6h": 95,
+        "rainfall_24h": 180,
+        "rainfall_72h": 320,
+        "river_level": 6.8,
+        "river_level_change": 0.75,
+        "temperature": 27,
+        "humidity": 91,
+        "soil_moisture": 88,
+        "elevation": 25,
+        "distance_from_river": 0.8,
+        "forecast_rainfall_24h": 210,
+        "forecast_rainfall_72h": 380,
+        "historical_flood_frequency": 0.78
+      }
+    }
+  ],
+  "expected_response_fields": [
+    "risk_score",
+    "risk_level",
+    "confidence",
+    "prediction_window_hours",
+    "factors"
+  ]
+}

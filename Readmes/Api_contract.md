@@ -66,7 +66,9 @@ VITE_API_URL=http://localhost:5000/api
 | GET | `/health` | Check backend status | Member 4 |
 | GET | `/weather` | Get weather information | Member 4 |
 | GET | `/risk` | Get flood-risk prediction | Member 4 + Member 1 |
+| GET | `/zones` | Get flood zones | Member 4 |
 | GET | `/route` | Find safe route | Member 4 + Member 2 |
+| POST | `/routes/safe` | Safe route transition endpoint | Member 4 + Member 2 |
 | GET | `/shelters` | Get nearby shelters | Member 4 + Member 2 |
 | GET | `/alerts` | Get localized warning | Member 4 |
 | POST | `/predict` | Internal ML prediction | Member 1 |
@@ -182,10 +184,10 @@ GET /api/risk?lat=12.9698&lng=79.1559
     "lat": 12.9698,
     "lng": 79.1559
   },
-  "probability": 0.82,
-  "risk": "HIGH",
+  "risk_score": 92,
+  "risk_level": "CRITICAL",
   "confidence": 0.91,
-  "predictionWindow": "72 hours",
+  "prediction_window_hours": 72,
   "factors": [
     {
       "name": "Heavy Rainfall",
@@ -200,7 +202,10 @@ GET /api/risk?lat=12.9698&lng=79.1559
       "impact": 0.17
     }
   ],
-  "recommendation": "Avoid low-lying areas and move toward a safe shelter."
+  "recommendation": "Avoid low-lying areas and move toward a safe shelter.",
+  "probability": 0.92,
+  "risk": "CRITICAL",
+  "predictionWindow": "72 hours"
 }
 ```
 
@@ -265,9 +270,10 @@ This is an internal service endpoint.
 
 ```json
 {
-  "probability": 0.82,
-  "risk": "CRITICAL",
+  "risk_score": 92,
+  "risk_level": "CRITICAL",
   "confidence": 0.91,
+  "prediction_window_hours": 72,
   "factors": [
     {
       "name": "Heavy Rainfall",
@@ -311,11 +317,27 @@ GET /api/route?from=12.9698,79.1559&to=12.9500,79.1300
   "estimatedTime": 14,
   "riskAvoided": 0.82,
   "routeType": "SAFE_ALTERNATIVE",
+  "distance_km": 4.8,
+  "estimated_minutes": 14,
+  "risk_level": "LOW",
+  "avoided_flood_zones": 2,
   "route": [
-    [79.1559, 12.9698],
-    [79.1500, 12.9650],
-    [79.1400, 12.9600],
-    [79.1300, 12.9500]
+    {
+      "lat": 12.9698,
+      "lng": 79.1559
+    },
+    {
+      "lat": 12.9650,
+      "lng": 79.1500
+    },
+    {
+      "lat": 12.9600,
+      "lng": 79.1400
+    },
+    {
+      "lat": 12.9500,
+      "lng": 79.1300
+    }
   ]
 }
 ```
@@ -395,6 +417,7 @@ GET /api/shelters?lat=12.9698&lng=79.1559&radius=10
       "distance": 1.2,
       "capacity": 500,
       "available": 320,
+      "available_capacity": 320,
       "status": "OPEN"
     },
     {
@@ -405,6 +428,7 @@ GET /api/shelters?lat=12.9698&lng=79.1559&radius=10
       "distance": 2.4,
       "capacity": 300,
       "available": 180,
+      "available_capacity": 180,
       "status": "OPEN"
     }
   ]
@@ -464,8 +488,8 @@ The frontend dashboard should eventually be able to display:
     "condition": "Heavy Rain"
   },
   "risk": {
-    "probability": 0.82,
-    "risk": "CRITICAL",
+    "risk_score": 92,
+    "risk_level": "CRITICAL",
     "confidence": 0.91
   },
   "alert": {
@@ -685,21 +709,17 @@ inside others.
 
 ## 29. 🗺️ Route Coordinate Format
 
-For route coordinates, use:
+For backend API responses, route coordinates should use objects:
 ```
-[longitude, latitude]
-```
-
-Example:
-```json
-[
-  [79.1559, 12.9698],
-  [79.1500, 12.9650],
-  [79.1400, 12.9600]
-]
+{ "lat": 12.9698, "lng": 79.1559 }
 ```
 
-This is important when working with GeoJSON/map libraries.
+If the frontend needs Leaflet arrays, it can convert them locally to:
+```
+[lat, lng]
+```
+
+Do not expose `[lng, lat]` in the backend contract.
 
 ---
 
@@ -723,18 +743,18 @@ If the model supports multiple horizons:
   "predictions": [
     {
       "hours": 24,
-      "probability": 0.55,
-      "risk": "MEDIUM"
+      "risk_score": 55,
+      "risk_level": "MODERATE"
     },
     {
       "hours": 48,
-      "probability": 0.71,
-      "risk": "HIGH"
+      "risk_score": 71,
+      "risk_level": "HIGH"
     },
     {
       "hours": 72,
-      "probability": 0.82,
-      "risk": "CRITICAL"
+      "risk_score": 92,
+      "risk_level": "CRITICAL"
     }
   ]
 }

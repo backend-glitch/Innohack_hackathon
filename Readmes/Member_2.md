@@ -114,7 +114,8 @@ GET /api/health
 Response:
 
 {
-  "status": "ok"
+  "status": "ok",
+  "service": "FloodGuard API"
 }
 
 ---
@@ -126,13 +127,16 @@ GET /api/weather?lat=12.97&lng=79.15
 Response:
 
 {
+  "location": {
+    "lat": 12.97,
+    "lng": 79.15
+  },
   "temperature": 27,
-  "humidity": 89,
+  "humidity": 91,
   "rainfall": 128,
-  "forecast": {
-    "24h": 145,
-    "72h": 280
-  }
+  "rainfallProbability": 85,
+  "windSpeed": 14,
+  "condition": "Heavy Rain"
 }
 
 ---
@@ -144,16 +148,26 @@ GET /api/risk?lat=12.97&lng=79.15
 Response:
 
 {
-  "risk_score": 82,
+  "location": {
+    "lat": 12.97,
+    "lng": 79.15
+  },
+  "risk_score": 92,
   "risk_level": "CRITICAL",
   "confidence": 0.91,
-  "prediction_window_hours": 12,
-  "factors": []
+  "prediction_window_hours": 72,
+  "factors": [],
+  "recommendation": "Avoid low-lying areas and move toward a safe shelter.",
+  "probability": 0.92,
+  "risk": "CRITICAL",
+  "predictionWindow": "72 hours"
 }
 
 The backend should internally call:
 
 ML_SERVICE_URL/predict
+
+Temporary aliases like `probability`, `risk`, and `predictionWindow` may remain during integration, but the main shape is `risk_score` / `risk_level`.
 
 ---
 
@@ -167,7 +181,7 @@ Response:
   "zones": [
     {
       "id": "zone-001",
-      "risk_score": 82,
+      "risk_score": 92,
       "risk_level": "CRITICAL",
       "polygon": []
     }
@@ -193,12 +207,11 @@ Response:
     {
       "id": "s1",
       "name": "Emergency Shelter A",
-      "latitude": 12.98,
-      "longitude": 79.16,
+      "lat": 12.98,
+      "lng": 79.16,
       "capacity": 500,
+      "available": 288,
       "available_capacity": 288,
-      "medical_support": true,
-      "water_available": true,
       "status": "OPEN"
     }
   ]
@@ -208,30 +221,30 @@ Response:
 
 # Safe Route
 
-POST /api/routes/safe
-
-Request:
-
-{
-  "origin": {
-    "lat": 12.97,
-    "lng": 79.15
-  },
-  "destination": {
-    "lat": 12.98,
-    "lng": 79.17
-  }
-}
+GET /api/route?from=12.97,79.15&to=12.98,79.17
 
 Response:
 
 {
-  "route": [],
-  "distance_km": 4.2,
+  "safe": true,
+  "risk": "LOW",
+  "distance": 4.8,
+  "estimatedTime": 14,
+  "riskAvoided": 0.82,
+  "routeType": "SAFE_ALTERNATIVE",
+  "distance_km": 4.8,
   "estimated_minutes": 14,
   "risk_level": "LOW",
-  "avoided_flood_zones": 2
+  "avoided_flood_zones": 2,
+  "route": [
+    {
+      "lat": 12.97,
+      "lng": 79.15
+    }
+  ]
 }
+
+Note: `POST /api/routes/safe` is still supported as a transition endpoint, but `GET /api/route` remains the current frontend path.
 
 ---
 
@@ -305,6 +318,33 @@ Backend → ML
 NOT:
 
 Frontend → ML
+
+The ML request contract uses:
+
+- `latitude`
+- `longitude`
+- `rainfall_1h`
+- `rainfall_6h`
+- `rainfall_24h`
+- `rainfall_72h`
+- `river_level`
+- `river_level_change`
+- `temperature`
+- `humidity`
+- `soil_moisture`
+- `elevation`
+- `distance_from_river`
+- `forecast_rainfall_24h`
+- `forecast_rainfall_72h`
+- `historical_flood_frequency`
+
+The ML response contract uses:
+
+- `risk_score`
+- `risk_level`
+- `confidence`
+- `prediction_window_hours`
+- `factors`
 
 ---
 

@@ -42,7 +42,7 @@ Only the **Backend** talks to ML, Routing, and Weather directly. The **Frontend*
 |---|---|---|---|
 | Member 1 (ML) | Member 4 (Backend) | `POST /predict` request/response | `API_CONTRACT.md` §9–11 |
 | Member 2 (Routing) | Member 4 (Backend) | Route + shelter data | `API_CONTRACT.md` §12–17 |
-| Member 4 (Backend) | Member 3 (Frontend) | `/risk`, `/route`, `/weather`, `/shelters`, `/alerts` | `API_CONTRACT.md` (full) |
+| Member 4 (Backend) | Member 3 (Frontend) | `/risk`, `/route`, `/weather`, `/shelters`, `/alerts`, `/zones` | `API_CONTRACT.md` (full) |
 | External Weather API | Member 4 (Backend) | Weather data | `API_CONTRACT.md` §5 |
 
 **Golden rule:** `docs/API_CONTRACT.md` is the single source of truth for every field name, type, and format used above. If your code and the contract disagree, the contract wins — update your code, or propose a contract change first (see §7).
@@ -107,7 +107,7 @@ Before marking any integration as "done," confirm:
 - [ ] Endpoint/field names match `API_CONTRACT.md` exactly
 - [ ] Data types match (numbers are numbers, not strings, etc.)
 - [ ] `lat` / `lng` format used consistently (not `latitude`/`longitude` or `lat`/`lon`)
-- [ ] Route coordinates use `[longitude, latitude]` order
+- [ ] Route coordinates use backend `lat` / `lng` objects, with Leaflet conversion handled in the frontend
 - [ ] Error responses follow the standard `{ success: false, error: { code, message } }` shape
 - [ ] Correct HTTP status codes returned
 - [ ] Demo/fallback data works if the real service is down
