@@ -1,0 +1,57 @@
+[
+    {
+        "id": "s1",
+        "name": "Emergency Shelter A",
+        "latitude": 12.9800,
+        "longitude": 79.1700,
+        "capacity": 500,
+        "available_capacity": 288,
+        "medical_support": true,
+        "water_available": true,
+        "status": "OPEN"
+    },
+    {
+        "id": "s2",
+        "name": "Emergency Shelter B",
+        "latitude": 12.9750,
+        "longitude": 79.1650,
+        "capacity": 300,
+        "available_capacity": 120,
+        "medical_support": true,
+        "water_available": true,
+        "status": "OPEN"
+    },
+    {
+        "id": "s3",
+        "name": "Emergency Shelter C",
+        "latitude": 12.9650,
+        "longitude": 79.1550,
+        "capacity": 400,
+        "available_capacity": 200,
+        "medical_support": false,
+        "water_available": true,
+        "status": "OPEN"
+    },
+    {
+        "id": "s4",
+        "name": "Emergency Shelter D",
+        "latitude": 12.9900,
+        "longitude": 79.1800,
+        "capacity": 300,
+        "available_capacity": 0,
+        "medical_support": true,
+        "water_available": true,
+        "status": "FULL"
+    },
+    {
+        "id": "s5",
+        "name": "Emergency Shelter E",
+        "latitude": 12.9600,
+        "longitude": 79.1400,
+        "capacity": 250,
+        "available_capacity": 150,
+        "medical_support": true,
+        "water_available": true,
+        "status": "CLOSED"
+    }
+]
