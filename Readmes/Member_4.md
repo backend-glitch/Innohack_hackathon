@@ -209,6 +209,27 @@ Response:
   "avoided_flood_zones": 2
 }
 
+GET /api/shelters/safe-route
+
+Response:
+
+{
+  "shelter": {
+    "id": "s1",
+    "name": "Emergency Shelter A",
+    "lat": 12.98,
+    "lng": 79.16,
+    "capacity": 500,
+    "available_capacity": 288,
+    "status": "OPEN"
+  },
+  "route": [],
+  "distance_km": 4.2,
+  "estimated_minutes": 14,
+  "risk_level": "LOW",
+  "routing_cost": 4.2
+}
+
 ---
 
 # 🏠 Shelter System

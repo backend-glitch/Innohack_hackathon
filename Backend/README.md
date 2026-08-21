@@ -18,6 +18,7 @@ npm run dev
 - `GET /api/route?from=lat,lng&to=lat,lng`
 - `POST /api/routes/safe`
 - `GET /api/shelters`
+- `GET /api/shelters/safe-route?lat=&lng=`
 - `GET /api/alerts?lat=&lng=`
 - `POST /api/sensors/simulate`
 
@@ -27,3 +28,4 @@ npm run dev
 - `POST /api/routes/safe` is the preferred integration endpoint for the frontend and matches the team handoff docs.
 - Route responses include both the newer contract fields and compatibility aliases while the team finalizes frontend integration.
 - `GET /api/zones` returns demo flood zones for the current integration stage.
+- `GET /api/shelters/safe-route` returns the safest available shelter and its route.

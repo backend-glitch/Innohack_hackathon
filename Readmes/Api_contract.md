@@ -70,6 +70,7 @@ VITE_API_URL=http://localhost:5000/api
 | GET | `/route` | Find safe route | Member 4 + Member 2 |
 | POST | `/routes/safe` | Safe route transition endpoint | Member 4 + Member 2 |
 | GET | `/shelters` | Get nearby shelters | Member 4 + Member 2 |
+| GET | `/shelters/safe-route` | Get safest shelter route | Member 4 + Member 2 |
 | GET | `/alerts` | Get localized warning | Member 4 |
 | POST | `/predict` | Internal ML prediction | Member 1 |
 
@@ -432,6 +433,48 @@ GET /api/shelters?lat=12.9698&lng=79.1559&radius=10
       "status": "OPEN"
     }
   ]
+}
+```
+
+**Safe Shelter Route**
+
+**Endpoint**
+```
+GET /api/shelters/safe-route
+```
+
+**Query Parameters**
+- `lat`
+- `lng`
+
+**Example**
+```
+GET /api/shelters/safe-route?lat=12.9698&lng=79.1559
+```
+
+**Response**
+```json
+{
+  "shelter": {
+    "id": "s1",
+    "name": "Emergency Shelter A",
+    "lat": 12.98,
+    "lng": 79.16,
+    "capacity": 500,
+    "available": 288,
+    "available_capacity": 288,
+    "status": "OPEN"
+  },
+  "route": [
+    {
+      "lat": 12.97,
+      "lng": 79.15
+    }
+  ],
+  "distance_km": 4.2,
+  "estimated_minutes": 14,
+  "risk_level": "LOW",
+  "routing_cost": 4.2
 }
 ```
 

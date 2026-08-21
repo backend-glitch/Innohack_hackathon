@@ -9,7 +9,7 @@ loadEnvFile();
 const port = Number(process.env.PORT || 5000);
 const mongoUri = process.env.MONGODB_URI;
 
-await connectDatabase(mongoUri).catch((error) => {
+connectDatabase(mongoUri).catch((error) => {
   console.warn("MongoDB connection skipped:", error.message);
 });
 
